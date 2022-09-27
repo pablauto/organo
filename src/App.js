@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Banner from './componentes/Banner/Banner';
+import Formulario from './componentes/Formulario';
+
+//https://www.figma.com/file/T6BLI1HfB81eYOiVgpqQz7/Projeto-Intro-ao-React?node-id=134%3A128
 
 function App() {
+  
+  const [colaboradores, setColaboradores] = useState([])
+
+  const aoNovoColaborador = (colaborador) => {
+    console.log(colaborador)
+    setColaboradores([...colaboradores, colaborador])
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Banner />
+      <Formulario aoCadastrado={colaborador => aoNovoColaborador(colaborador)}/>
     </div>
   );
 }
