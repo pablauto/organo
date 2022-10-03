@@ -5,15 +5,6 @@ import Botao from '../Botao'
 import { useState } from 'react'
 
 const Formulario = (props) => {
-    const times = [
-        "Escolha",
-        "Programação",
-        "Front-End",
-        "Data Science",
-        "Devops",
-        "Ux Deseing",
-        "BD"
-    ]
 
     const [nome, setNome] = useState('')
     const [cargo, setCargo] = useState('')
@@ -23,8 +14,12 @@ const Formulario = (props) => {
     const aoSalvar = (evento) => {
         evento.preventDefault()
         props.aoCadastrado({nome,cargo,imagem,time})
-        console.log('Form foi submetido -',nome, cargo, imagem, time)
+        setNome('')
+        setCargo('')
+        setImagem('')
+        setTime('')
     }
+    
 
     return(
         <section className='formulario'>
@@ -36,7 +31,7 @@ const Formulario = (props) => {
                 <ListaSuspensa
                     obrigatorio={true}
                     label="Time"
-                    itens={times} 
+                    itens={props.times} 
                     valor={time}
                     aoAlterado={valor => setTime(valor)}
                     />
